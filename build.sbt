@@ -14,6 +14,9 @@ ThisBuild / scalacOptions ++= Seq(
 
 val Deps = {
   object deps {
+    val turbolift = "io.github.marcinzh" %% "turbolift-core" % "0.77.0-SNAPSHOT"
+    val cats_core = "org.typelevel" %% "cats-core" % "2.10.0"
+    val cats_effect = "org.typelevel" %% "cats-effect" % "3.5.4"
   }
   deps
 }
@@ -28,6 +31,9 @@ lazy val core = project
   .in(file("modules/core"))
   .settings(name := "spot-core")
   .settings(libraryDependencies ++= Seq(
+    Deps.turbolift,
+    Deps.cats_core,
+    Deps.cats_effect,
   ))
 
 lazy val devel = project
