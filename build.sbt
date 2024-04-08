@@ -1,5 +1,5 @@
 ThisBuild / organization := "io.github.marcinzh"
-ThisBuild / version := "0.1.0"
+ThisBuild / version := "0.2.0-SNAPSHOT"
 ThisBuild / scalaVersion := "3.3.3"
 ThisBuild / crossScalaVersions := Seq(scalaVersion.value)
 
@@ -14,7 +14,7 @@ ThisBuild / scalacOptions ++= Seq(
 
 val Deps = {
   object deps {
-    val turbolift = "io.github.marcinzh" %% "turbolift-core" % "0.77.0-SNAPSHOT"
+    val turbolift = "io.github.marcinzh" %% "turbolift-core" % "0.83.0-SNAPSHOT"
     val cats_core = "org.typelevel" %% "cats-core" % "2.10.0"
     val cats_effect = "org.typelevel" %% "cats-effect" % "3.5.4"
   }
@@ -58,7 +58,7 @@ cls := {
 
 //-------------------------------------------------
 
-ThisBuild / description := "Spot" //@#@TODO
+ThisBuild / description := "Spot - Cats Effect instances for Turbolift"
 ThisBuild / organizationName := "marcinzh"
 ThisBuild / homepage := Some(url("https://github.com/marcinzh/spot"))
 ThisBuild / scmInfo := Some(ScmInfo(url("https://github.com/marcinzh/spot"), "scm:git@github.com:marcinzh/spot.git"))

@@ -13,4 +13,4 @@ class TheApplicative[U] extends Applicative[Par[_, U]]:
     Par.wrap:
       val ff1 = Par.unwrap(ff)
       val fa1 = Par.unwrap(fa)
-      ff1.zipWithPar(fa1)((_(_)))
+      ff1.zipWithPar(fa1)(_(_))
