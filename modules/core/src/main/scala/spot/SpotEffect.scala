@@ -26,9 +26,9 @@ object SpotEffect:
 
     //// Members declared in cats.effect.kernel.GenConcurrent
 
-    override def deferred[A]: TDeferred[A] !! U = SpotDeferred.fresh()
+    override def deferred[A]: TDeferred[A] !! U = SpotDeferred.create()
 
-    override def ref[A](a: A): TRef[A] !! U = SpotRef.fresh(a)
+    override def ref[A](a: A): TRef[A] !! U = SpotRef.create(a)
 
     //// Members declared in cats.effect.kernel.Async
 
@@ -62,13 +62,16 @@ object SpotEffect:
 
     override def onCancel[A](fa: A !! U, fin: Unit !! U): A !! U = IO.onCancel(fa)(fin)
 
-    override def uncancelable[A](body: TPoll => A !! U): A !! U = ???
+    override def uncancelable[A](body: TPoll => A !! U): A !! U =
+      val poll = new TPoll:
+        override def apply[X](aa: X !! U) = IO.cancellable(aa)
+      IO.uncancellable(body(poll))
 
     //// Members declared in cats.effect.kernel.Sync
 
     override def suspend[A](hint: Sync.Type)(thunk: => A): A !! U =
       hint match
         case Sync.Type.Delay => IO(thunk)
-        case Sync.Type.Blocking => IO.blocking(thunk)
-        case Sync.Type.InterruptibleOnce => ???
-        case Sync.Type.InterruptibleMany => ???
+        case Sync.Type.Blocking |
+             Sync.Type.InterruptibleOnce |
+             Sync.Type.InterruptibleMany => IO.blocking(thunk)

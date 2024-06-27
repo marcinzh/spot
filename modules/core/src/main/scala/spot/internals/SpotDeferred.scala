@@ -18,4 +18,4 @@ final class SpotDeferred[A, U <: IO] private (underlying: OnceVar[A]) extends De
   
 
 object SpotDeferred:
-  def fresh[A, U <: IO](): SpotDeferred[A, U] !! U = OnceVar.fresh[A].map(new SpotDeferred(_))
+  def create[A, U <: IO](): SpotDeferred[A, U] !! U = OnceVar.create[A].map(new SpotDeferred(_))

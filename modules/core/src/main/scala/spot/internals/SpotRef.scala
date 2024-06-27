@@ -32,8 +32,12 @@ final class SpotRef[S, U <: IO] private (underlying: AtomicVar[S]) extends Ref[!
 
   override def tryModifyState[A](s: State[S, A]): Option[A] !! U = tryModify(s.run.andThen(_.value))
 
-  override def access: (S, S => Boolean !! U) !! U = ???
+  override def access: (S, S => Boolean !! U) !! U =
+    !!.impure:
+      val s = underlying.unsafeGet
+      val f = (s2: S) => !!.impure(underlying.unsafeCompareAndSet(s, s2))
+      (s, f)
   
 
 object SpotRef:
-  def fresh[S, U <: IO](initial: S): SpotRef[S, U] !! U = AtomicVar.fresh(initial).map(new SpotRef(_))
+  def create[S, U <: IO](initial: S): SpotRef[S, U] !! U = AtomicVar.create(initial).map(new SpotRef(_))
