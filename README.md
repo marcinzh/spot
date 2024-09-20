@@ -1,3 +1,4 @@
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.marcinzh/spot-core_3/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.marcinzh/spot-core_3)
 
 # Spot
 
