@@ -1,4 +1,4 @@
-![Maven Central Version](https://img.shields.io/maven-central/v/io.github.marcinzh/spot-core_3)
+[![Maven Central Version](https://img.shields.io/maven-central/v/io.github.marcinzh/spot-core_3)](https://mvnrepository.com/artifact/io.github.marcinzh/spot-core)
 
 # Spot
 
