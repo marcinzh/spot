@@ -1,5 +1,5 @@
 ThisBuild / organization := "io.github.marcinzh"
-ThisBuild / version := "0.6.0"
+ThisBuild / version := "0.7.0"
 ThisBuild / scalaVersion := "3.3.3"
 ThisBuild / crossScalaVersions := Seq(scalaVersion.value)
 
@@ -14,9 +14,9 @@ ThisBuild / scalacOptions ++= Seq(
 
 val Deps = {
   object deps {
-    val turbolift = "io.github.marcinzh" %% "turbolift-core" % "0.96.1"
-    val cats_core = "org.typelevel" %% "cats-core" % "2.12.0"
-    val cats_effect = "org.typelevel" %% "cats-effect" % "3.5.4"
+    val turbolift = "io.github.marcinzh" %% "turbolift-core" % "0.104.0"
+    val cats_core = "org.typelevel" %% "cats-core" % "2.13.0"
+    val cats_effect = "org.typelevel" %% "cats-effect" % "3.5.7"
   }
   deps
 }
