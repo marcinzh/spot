@@ -1,5 +1,5 @@
 ThisBuild / organization := "io.github.marcinzh"
-ThisBuild / version := "0.7.0"
+ThisBuild / version := "0.8.0"
 ThisBuild / scalaVersion := "3.3.3"
 ThisBuild / crossScalaVersions := Seq(scalaVersion.value)
 
@@ -62,7 +62,7 @@ ThisBuild / description := "Spot - Cats Effect instances for Turbolift"
 ThisBuild / organizationName := "marcinzh"
 ThisBuild / homepage := Some(url("https://github.com/marcinzh/spot"))
 ThisBuild / scmInfo := Some(ScmInfo(url("https://github.com/marcinzh/spot"), "scm:git@github.com:marcinzh/spot.git"))
-ThisBuild / licenses := List("MIT" -> new URL("http://www.opensource.org/licenses/MIT"))
+ThisBuild / licenses := List("MIT" -> url("http://www.opensource.org/licenses/MIT"))
 ThisBuild / versionScheme := Some("semver-spec")
 ThisBuild / pomIncludeRepository := { _ => false }
 ThisBuild / publishMavenStyle := true
