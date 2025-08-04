@@ -2,7 +2,8 @@ package spot.internals
 import cats.effect.kernel.{Fiber => CatsFiber, Outcome => CatsOutcome}
 import turbolift.!!
 import turbolift.effects.IO
-import turbolift.io.{Fiber, Outcome}
+import turbolift.io.Fiber
+import turbolift.data.Outcome
 
 
 final case class SpotFiber[A, U <: IO](underlying: Fiber[A, U]) extends CatsFiber[!![_, U], Throwable, A]:
