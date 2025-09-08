@@ -1,5 +1,5 @@
 ThisBuild / organization := "io.github.marcinzh"
-ThisBuild / version := "0.12.0"
+ThisBuild / version := "0.14.0"
 ThisBuild / scalaVersion := "3.3.6"
 ThisBuild / scalacOptions ++= Seq(
   "-deprecation",
@@ -17,7 +17,7 @@ ThisBuild / scalacOptions += {
 
 val Deps = {
   object deps {
-    val turbolift = "io.github.marcinzh" %% "turbolift-core" % "0.118.0"
+    val turbolift = "io.github.marcinzh" %% "turbolift-core" % "0.120.0"
     val cats_core = "org.typelevel" %% "cats-core" % "2.13.0"
     val cats_effect = "org.typelevel" %% "cats-effect" % "3.6.3"
   }

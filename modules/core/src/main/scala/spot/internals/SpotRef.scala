@@ -30,14 +30,10 @@ final class SpotRef[S, U <: IO] private (underlying: AtomicVar[S]) extends Ref[!
   override def tryModifyState[A](s: State[S, A]): Option[A] !! U = tryModify(s.run.andThen(_.value))
 
   override def access: (S, S => Boolean !! U) !! U =
-    //@#@TODO Need to make `AtomicVar.unsafeCompareAndSet` public again
     !!.impure:
-      val s0 = underlying.unsafeGet
-      (s0, s2 => underlying.update(s1 => if s0 == s1 then (true, s2) else (false, s1)))
-    // !!.impure:
-    //   val s = underlying.unsafeGet
-    //   val f = (s2: S) => !!.impure(underlying.unsafeCompareAndSet(s, s2))
-    //   (s, f)
+      val s = underlying.unsafeGet
+      val f = (s2: S) => !!.impure(underlying.unsafeCompareAndSet(s, s2))
+      (s, f)
   
 
 object SpotRef:
