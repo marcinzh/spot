@@ -63,9 +63,10 @@ object SpotEffect:
     override def onCancel[A](fa: A !! U, fin: Unit !! U): A !! U = IO.onCancel(fa)(fin)
 
     override def uncancelable[A](body: TPoll => A !! U): A !! U =
-      val poll = new TPoll:
-        override def apply[X](aa: X !! U) = IO.cancellable(aa)
-      IO.uncancellable(body(poll))
+      IO.uncancellableWith: restore =>
+        val poll = new TPoll:
+          override def apply[X](aa: X !! U) = restore(aa)
+        body(poll)
 
     //// Members declared in cats.effect.kernel.Sync
 

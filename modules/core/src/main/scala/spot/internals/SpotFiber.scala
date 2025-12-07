@@ -14,7 +14,7 @@ final case class SpotFiber[A, U <: IO](underlying: Fiber[A, U]) extends CatsFibe
       z.handleIO match
         case Outcome.Success(z) => CatsOutcome.Succeeded(z.run)
         case Outcome.Cancelled => CatsOutcome.Canceled()
-        case Outcome.Failure(c) => CatsOutcome.Errored(c.last)
+        case Outcome.Failure(c) => CatsOutcome.Errored(c.last.toThrowable)
 
 
 object SpotFiber:
