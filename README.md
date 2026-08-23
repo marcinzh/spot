@@ -1,6 +1,12 @@
 [![Maven Central Version](https://img.shields.io/maven-central/v/io.github.marcinzh/spot-core_3)](https://mvnrepository.com/artifact/io.github.marcinzh/spot-core)
 
-# Spot
+# :headstone: 
+
+The project is now moved to submodule in [Turbolift](https://github.com/marcinzh/turbolift) repo.
+
+# Spot 
+
+
 
 - [Cats](https://github.com/typelevel/cats) instances for [Turbolift](https://github.com/marcinzh/turbolift)'s `Computation` monad. 
 
